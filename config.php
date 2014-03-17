@@ -1,0 +1,13 @@
+<?php 
+$webname="WebboardSE";
+
+
+
+
+
+
+
+
+
+
+?>
