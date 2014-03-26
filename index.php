@@ -1,14 +1,22 @@
 <?php 
 include 'config.php';
+<<<<<<< HEAD
 
 ?>
 
 
+=======
+?>
+>>>>>>> d9b2203806cbaee01bfffaa62d6b9837990bd556
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+<<<<<<< HEAD
         <title><?php echo $webname;  ?></title>
+=======
+        <title><?php echo $webname;?></title>
+>>>>>>> d9b2203806cbaee01bfffaa62d6b9837990bd556
         <meta name="generator" content="Bootply" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
@@ -287,14 +295,22 @@ a,a:hover {
           
           
           <!--/stories-->
+<<<<<<< HEAD
           <?php  for($i=0;$i<10;$i++) {      ?>
+=======
+          <?php for($i=0;$i<10;$i++){?>
+>>>>>>> d9b2203806cbaee01bfffaa62d6b9837990bd556
           <div class="row">    
             <br>
             <div class="col-md-2 col-sm-3 text-center">
               <a class="story-title" href="http://www.techvisually.com/p/2LmGb0yEsL"><img alt="Repurpose Content to Reach a Wider Audience" src="http://site2img-api.herokuapp.com/1078600787" style="width:100px;height:100px" class="img-circle"></a>
             </div>
             <div class="col-md-10 col-sm-9">
+<<<<<<< HEAD
               <h3>No.<?php echo($i+1);?></h3>
+=======
+              <h3>No. <?php echo ($i+1);?></h3>
+>>>>>>> d9b2203806cbaee01bfffaa62d6b9837990bd556
               <div class="row">
                 <div class="col-xs-9">
                   <h4><span class="label label-default">97thfloor.com</span></h4><h4>
@@ -305,9 +321,15 @@ a,a:hover {
               <br><br>
             </div>
           </div>
+<<<<<<< HEAD
           <?php }?>
           
          
+=======
+          <hr>
+          <?php } ?>
+          
+>>>>>>> d9b2203806cbaee01bfffaa62d6b9837990bd556
           <!--/stories-->
           
           
