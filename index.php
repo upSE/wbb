@@ -1,8 +1,11 @@
+<?php 
+include 'config.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
-        <title>Bootply.com - Storystrap Template</title>
+        <title><?php echo $webname;?></title>
         <meta name="generator" content="Bootply" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
@@ -281,13 +284,14 @@ a,a:hover {
           
           
           <!--/stories-->
+          <?php for($i=0;$i<10;$i++){?>
           <div class="row">    
             <br>
             <div class="col-md-2 col-sm-3 text-center">
               <a class="story-title" href="http://www.techvisually.com/p/2LmGb0yEsL"><img alt="Repurpose Content to Reach a Wider Audience" src="http://site2img-api.herokuapp.com/1078600787" style="width:100px;height:100px" class="img-circle"></a>
             </div>
             <div class="col-md-10 col-sm-9">
-              <h3>Repurpose Content to Reach a Wider Audience</h3>
+              <h3>No. <?php echo ($i+1);?></h3>
               <div class="row">
                 <div class="col-xs-9">
                   <h4><span class="label label-default">97thfloor.com</span></h4><h4>
@@ -299,82 +303,8 @@ a,a:hover {
             </div>
           </div>
           <hr>
+          <?php } ?>
           
-          <div class="row">    
-            <br>
-            <div class="col-md-2 col-sm-3 text-center">
-              <a class="story-title" href="http://www.techvisually.com/p/M9aZMr7qXc"><img alt="14 Useful Sites for Designers" src="http://site2img-api.herokuapp.com/1078600777" style="width:100px;height:100px" class="img-circle"></a>
-            </div>
-            <div class="col-md-10 col-sm-9">
-              <h3>14 Useful Sites for Designers</h3>
-              <div class="row">
-                <div class="col-xs-9">
-                  <h4><span class="label label-default">devgarage.com</span></h4><h4>
-                  <small style="font-family:courier,'new courier';" class="text-muted">Yesterday • <a href="#" class="text-muted">Read More</a></small>
-                  </h4></div>
-                <div class="col-xs-3"></div>
-              </div>
-              <br><br>
-            </div>
-          </div>
-          <hr>
-                  
-          <div class="row">    
-            <br>
-            <div class="col-md-2 col-sm-3 text-center">
-              <a class="story-title" href="http://www.techvisually.com/p/AjwaicZ90d"><img alt="Measuring Your Link Building with Google Analytics" src="http://site2img-api.herokuapp.com/1078043535" style="width:100px;height:100px" class="img-circle"></a>
-            </div>
-            <div class="col-md-10 col-sm-9">
-              <h3>Measuring Your Link Building with Google Analytics</h3>
-              <div class="row">
-                <div class="col-xs-9">
-                  <h4><span class="label label-default">searchenginewatch.com</span></h4><h4>
-                  <small style="font-family:courier,'new courier';" class="text-muted">Yesterday • <a href="#" class="text-muted">Read More</a></small>
-                  </h4></div>
-                <div class="col-xs-3"></div>
-              </div>
-              <br><br>
-            </div>
-          </div>
-          <hr>
-
-          <div class="row">    
-            <br>
-            <div class="col-md-2 col-sm-3 text-center">
-              <a class="story-title" href="http://www.techvisually.com/p/PbhBwE6bwE"><img alt="Dramatically Raise the Value of Any Piece of Content with These 27 Tactics" src="http://site2img-api.herokuapp.com/1077116470" style="width:100px;height:100px" class="img-circle"></a>
-            </div>
-            <div class="col-md-10 col-sm-9">
-              <h3>Dramatically Raise the Value of Any Piece of Content with These 27 Tactics</h3>
-              <div class="row">
-                <div class="col-xs-9">
-                  <h4><span class="label label-default">searchenginewatch.com</span></h4><h4>
-                  <small style="font-family:courier,'new courier';" class="text-muted">2 days ago • <a href="#" class="text-muted">Read More</a></small>
-                  </h4></div>
-                <div class="col-xs-3"></div>
-              </div>
-              <br><br>
-            </div>
-          </div>
-          <hr>
-          
-          <div class="row">    
-            <br>
-            <div class="col-md-2 col-sm-3 text-center">
-              <a class="story-title" href="http://www.techvisually.com/p/j15CXz21w4"><img alt="TrendPaper - What's Trending in the World" src="http://site2img-api.herokuapp.com/1077109731" style="width:100px;height:100px" class="img-circle"></a>
-            </div>
-            <div class="col-md-10 col-sm-9">
-              <h3>TrendPaper - What's Trending in the World</h3>
-              <div class="row">
-                <div class="col-xs-9">
-                  <h4><span class="label label-default">betali.st</span></h4><h4>
-                  <small style="font-family:courier,'new courier';" class="text-muted">Last week • <a href="#" class="text-muted">Read More</a></small>
-                  </h4></div>
-                <div class="col-xs-3"></div>
-              </div>
-              <br><br>
-            </div>
-          </div>
-          <hr>
           <!--/stories-->
           
           
