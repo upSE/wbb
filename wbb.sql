@@ -2,13 +2,13 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
-CREATE SCHEMA IF NOT EXISTS `u926501360_wbb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
-USE `u926501360_wbb` ;
+CREATE SCHEMA IF NOT EXISTS `wbb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+USE `wbb` ;
 
 -- -----------------------------------------------------
--- Table `u926501360_wbb`.`SEX`
+-- Table `wbb`.`SEX`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `u926501360_wbb`.`SEX` (
+CREATE TABLE IF NOT EXISTS `wbb`.`SEX` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `value` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
@@ -16,9 +16,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `u926501360_wbb`.`privilege`
+-- Table `wbb`.`privilege`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `u926501360_wbb`.`privilege` (
+CREATE TABLE IF NOT EXISTS `wbb`.`privilege` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `value` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
@@ -26,9 +26,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `u926501360_wbb`.`member`
+-- Table `wbb`.`member`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `u926501360_wbb`.`member` (
+CREATE TABLE IF NOT EXISTS `wbb`.`member` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `fname` VARCHAR(45) NULL,
   `lname` VARCHAR(45) NULL,
@@ -50,21 +50,21 @@ CREATE TABLE IF NOT EXISTS `u926501360_wbb`.`member` (
   UNIQUE INDEX `email_UNIQUE` (`email` ASC),
   CONSTRAINT `fk_member_SEX`
     FOREIGN KEY (`SEX_id`)
-    REFERENCES `u926501360_wbb`.`SEX` (`id`)
+    REFERENCES `wbb`.`SEX` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_member_privilege1`
     FOREIGN KEY (`privilege_id`)
-    REFERENCES `u926501360_wbb`.`privilege` (`id`)
+    REFERENCES `wbb`.`privilege` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `u926501360_wbb`.`group`
+-- Table `wbb`.`group`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `u926501360_wbb`.`group` (
+CREATE TABLE IF NOT EXISTS `wbb`.`group` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `value` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
@@ -72,9 +72,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `u926501360_wbb`.`supgroup`
+-- Table `wbb`.`supgroup`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `u926501360_wbb`.`supgroup` (
+CREATE TABLE IF NOT EXISTS `wbb`.`supgroup` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `value` VARCHAR(45) NULL,
   `group_id` INT NOT NULL,
@@ -82,16 +82,16 @@ CREATE TABLE IF NOT EXISTS `u926501360_wbb`.`supgroup` (
   INDEX `fk_supgroup_group1_idx` (`group_id` ASC),
   CONSTRAINT `fk_supgroup_group1`
     FOREIGN KEY (`group_id`)
-    REFERENCES `u926501360_wbb`.`group` (`id`)
+    REFERENCES `wbb`.`group` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `u926501360_wbb`.`post`
+-- Table `wbb`.`post`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `u926501360_wbb`.`post` (
+CREATE TABLE IF NOT EXISTS `wbb`.`post` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `topic` VARCHAR(45) NULL,
   `content` TEXT NULL,
@@ -106,21 +106,21 @@ CREATE TABLE IF NOT EXISTS `u926501360_wbb`.`post` (
   INDEX `fk_post_supgroup1_idx` (`supgroup_id` ASC, `supgroup_group_id` ASC),
   CONSTRAINT `fk_post_member1`
     FOREIGN KEY (`member_id`)
-    REFERENCES `u926501360_wbb`.`member` (`id`)
+    REFERENCES `wbb`.`member` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_post_supgroup1`
     FOREIGN KEY (`supgroup_id` , `supgroup_group_id`)
-    REFERENCES `u926501360_wbb`.`supgroup` (`id` , `group_id`)
+    REFERENCES `wbb`.`supgroup` (`id` , `group_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `u926501360_wbb`.`comment`
+-- Table `wbb`.`comment`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `u926501360_wbb`.`comment` (
+CREATE TABLE IF NOT EXISTS `wbb`.`comment` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `post_id` INT NOT NULL,
   `comment` TEXT NULL,
@@ -132,21 +132,21 @@ CREATE TABLE IF NOT EXISTS `u926501360_wbb`.`comment` (
   INDEX `fk_comment_member1_idx` (`member_id` ASC),
   CONSTRAINT `fk_comment_post1`
     FOREIGN KEY (`post_id`)
-    REFERENCES `u926501360_wbb`.`post` (`id`)
+    REFERENCES `wbb`.`post` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_comment_member1`
     FOREIGN KEY (`member_id`)
-    REFERENCES `u926501360_wbb`.`member` (`id`)
+    REFERENCES `wbb`.`member` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `u926501360_wbb`.`member_has_group`
+-- Table `wbb`.`member_has_group`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `u926501360_wbb`.`member_has_group` (
+CREATE TABLE IF NOT EXISTS `wbb`.`member_has_group` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `member_id` INT NOT NULL,
   `group_id` INT NOT NULL,
@@ -155,12 +155,12 @@ CREATE TABLE IF NOT EXISTS `u926501360_wbb`.`member_has_group` (
   INDEX `fk_member_has_group_member1_idx` (`member_id` ASC),
   CONSTRAINT `fk_member_has_group_member1`
     FOREIGN KEY (`member_id`)
-    REFERENCES `u926501360_wbb`.`member` (`id`)
+    REFERENCES `wbb`.`member` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_member_has_group_group1`
     FOREIGN KEY (`group_id`)
-    REFERENCES `u926501360_wbb`.`group` (`id`)
+    REFERENCES `wbb`.`group` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
