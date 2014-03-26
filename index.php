@@ -1,5 +1,5 @@
 <?php
-include 'confic.php';
+include 'config.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -307,7 +307,7 @@ a,a:hover {
 
 
 						<!--/stories-->
-						<?php  for($i=0;$i<10;$i++){?>
+						<?php  ?>
 						<div class="row">
 							<br>
 							<div class="col-md-2 col-sm-3 text-center">
@@ -322,7 +322,7 @@ a,a:hover {
 							</div>
 						</div>
 						<hr>
-<?php }?>
+<?php ?>
 
 							<!--/stories-->
 
