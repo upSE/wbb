@@ -1,171 +1,208 @@
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+-- phpMyAdmin SQL Dump
+-- version 4.0.4.2
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Mar 27, 2014 at 09:55 PM
+-- Server version: 5.5.32-MariaDB
+-- PHP Version: 5.4.19
 
-CREATE SCHEMA IF NOT EXISTS `wbb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
-USE `wbb` ;
-
--- -----------------------------------------------------
--- Table `wbb`.`SEX`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `wbb`.`SEX` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `value` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
--- -----------------------------------------------------
--- Table `wbb`.`privilege`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `wbb`.`privilege` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `value` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
 
+--
+-- Database: `wbb`
+--
+CREATE DATABASE IF NOT EXISTS `wbb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `wbb`;
 
--- -----------------------------------------------------
--- Table `wbb`.`member`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `wbb`.`member` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `fname` VARCHAR(45) NULL,
-  `lname` VARCHAR(45) NULL,
-  `email` VARCHAR(50) NULL,
-  `birthday` DATE NULL,
-  `tell` VARCHAR(10) NULL,
-  `SEX_id` INT NOT NULL,
-  `enabled` TINYINT(1) NULL DEFAULT 0,
-  `registerdate` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-  `privilege_id` INT NOT NULL,
-  `username` VARCHAR(45) NULL,
-  `password` VARCHAR(45) NULL,
-  `confirmmember` VARCHAR(45) NULL,
-  `profile` VARCHAR(100) NULL,
-  PRIMARY KEY (`id`, `SEX_id`, `privilege_id`),
-  INDEX `fk_member_SEX_idx` (`SEX_id` ASC),
-  INDEX `fk_member_privilege1_idx` (`privilege_id` ASC),
-  UNIQUE INDEX `username_UNIQUE` (`username` ASC),
-  UNIQUE INDEX `email_UNIQUE` (`email` ASC),
-  CONSTRAINT `fk_member_SEX`
-    FOREIGN KEY (`SEX_id`)
-    REFERENCES `wbb`.`SEX` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_member_privilege1`
-    FOREIGN KEY (`privilege_id`)
-    REFERENCES `wbb`.`privilege` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+-- --------------------------------------------------------
 
+--
+-- Table structure for table `catagory`
+--
 
--- -----------------------------------------------------
--- Table `wbb`.`group`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `wbb`.`group` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `value` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
+CREATE TABLE IF NOT EXISTS `catagory` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `topic` varchar(45) DEFAULT NULL,
+  `description` varchar(100) DEFAULT NULL,
+  `image` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
+--
+-- Dumping data for table `catagory`
+--
 
--- -----------------------------------------------------
--- Table `wbb`.`supgroup`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `wbb`.`supgroup` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `value` VARCHAR(45) NULL,
-  `group_id` INT NOT NULL,
-  PRIMARY KEY (`id`, `group_id`),
-  INDEX `fk_supgroup_group1_idx` (`group_id` ASC),
-  CONSTRAINT `fk_supgroup_group1`
-    FOREIGN KEY (`group_id`)
-    REFERENCES `wbb`.`group` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+INSERT INTO `catagory` (`id`, `topic`, `description`, `image`) VALUES
+(1, 'ศูนย์ข้อมูลมหาวิทยาลัยพะเยา', 'ศูนย์รวมการสื่อสารต่างๆ ภายในมหาวิทยาลัยพะเยา', 'uplogo.png'),
+(2, 'แหล่งซื้อขายสินค้ามือสอง', NULL, 'Second_Hand_Logo_invert.jpg'),
+(3, 'ศูนย์ข้อมูลจังหวัดพะเยา', NULL, 'phayaologo.jpg');
 
+-- --------------------------------------------------------
 
--- -----------------------------------------------------
--- Table `wbb`.`post`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `wbb`.`post` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `topic` VARCHAR(45) NULL,
-  `content` TEXT NULL,
-  `created` TIMESTAMP NULL,
-  `updated` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-  `member_id` INT NOT NULL,
-  `supgroup_id` INT NOT NULL,
-  `supgroup_group_id` INT NOT NULL,
-  `editabled` TINYINT(1) NULL DEFAULT 1,
-  PRIMARY KEY (`id`, `member_id`, `supgroup_id`, `supgroup_group_id`),
-  INDEX `fk_post_member1_idx` (`member_id` ASC),
-  INDEX `fk_post_supgroup1_idx` (`supgroup_id` ASC, `supgroup_group_id` ASC),
-  CONSTRAINT `fk_post_member1`
-    FOREIGN KEY (`member_id`)
-    REFERENCES `wbb`.`member` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_post_supgroup1`
-    FOREIGN KEY (`supgroup_id` , `supgroup_group_id`)
-    REFERENCES `wbb`.`supgroup` (`id` , `group_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+--
+-- Table structure for table `comment`
+--
 
+CREATE TABLE IF NOT EXISTS `comment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `post_id` int(11) NOT NULL,
+  `comment` text,
+  `member_id` int(11) NOT NULL,
+  `created` datetime DEFAULT NULL,
+  `updated` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`,`post_id`,`member_id`),
+  KEY `fk_comment_post1_idx` (`post_id`),
+  KEY `fk_comment_member1_idx` (`member_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
--- -----------------------------------------------------
--- Table `wbb`.`comment`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `wbb`.`comment` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `post_id` INT NOT NULL,
-  `comment` TEXT NULL,
-  `member_id` INT NOT NULL,
-  `created` DATETIME NULL,
-  `updated` TIMESTAMP NULL,
-  PRIMARY KEY (`id`, `post_id`, `member_id`),
-  INDEX `fk_comment_post1_idx` (`post_id` ASC),
-  INDEX `fk_comment_member1_idx` (`member_id` ASC),
-  CONSTRAINT `fk_comment_post1`
-    FOREIGN KEY (`post_id`)
-    REFERENCES `wbb`.`post` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_comment_member1`
-    FOREIGN KEY (`member_id`)
-    REFERENCES `wbb`.`member` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+-- --------------------------------------------------------
 
+--
+-- Table structure for table `member`
+--
 
--- -----------------------------------------------------
--- Table `wbb`.`member_has_group`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `wbb`.`member_has_group` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `member_id` INT NOT NULL,
-  `group_id` INT NOT NULL,
-  PRIMARY KEY (`id`, `member_id`, `group_id`),
-  INDEX `fk_member_has_group_group1_idx` (`group_id` ASC),
-  INDEX `fk_member_has_group_member1_idx` (`member_id` ASC),
-  CONSTRAINT `fk_member_has_group_member1`
-    FOREIGN KEY (`member_id`)
-    REFERENCES `wbb`.`member` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_member_has_group_group1`
-    FOREIGN KEY (`group_id`)
-    REFERENCES `wbb`.`group` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+CREATE TABLE IF NOT EXISTS `member` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fname` varchar(45) DEFAULT NULL,
+  `lname` varchar(45) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `birthday` date DEFAULT NULL,
+  `tell` varchar(10) DEFAULT NULL,
+  `SEX_id` int(11) NOT NULL,
+  `enabled` tinyint(1) DEFAULT '0',
+  `registerdate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `privilege_id` int(11) NOT NULL,
+  `username` varchar(45) DEFAULT NULL,
+  `password` varchar(45) DEFAULT NULL,
+  `confirmmember` varchar(45) DEFAULT NULL,
+  `profile` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`,`SEX_id`,`privilege_id`),
+  UNIQUE KEY `username_UNIQUE` (`username`),
+  UNIQUE KEY `email_UNIQUE` (`email`),
+  KEY `fk_member_SEX_idx` (`SEX_id`),
+  KEY `fk_member_privilege1_idx` (`privilege_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+-- --------------------------------------------------------
 
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+--
+-- Table structure for table `member_has_group`
+--
+
+CREATE TABLE IF NOT EXISTS `member_has_group` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `member_id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`,`member_id`,`group_id`),
+  KEY `fk_member_has_group_group1_idx` (`group_id`),
+  KEY `fk_member_has_group_member1_idx` (`member_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `post`
+--
+
+CREATE TABLE IF NOT EXISTS `post` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `topic` varchar(45) DEFAULT NULL,
+  `content` text,
+  `created` timestamp NULL DEFAULT NULL,
+  `updated` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `member_id` int(11) NOT NULL,
+  `supgroup_id` int(11) NOT NULL,
+  `supgroup_group_id` int(11) NOT NULL,
+  `editabled` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`id`,`member_id`,`supgroup_id`,`supgroup_group_id`),
+  KEY `fk_post_member1_idx` (`member_id`),
+  KEY `fk_post_supgroup1_idx` (`supgroup_id`,`supgroup_group_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `privilege`
+--
+
+CREATE TABLE IF NOT EXISTS `privilege` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `value` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sex`
+--
+
+CREATE TABLE IF NOT EXISTS `sex` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `value` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subcatagory`
+--
+
+CREATE TABLE IF NOT EXISTS `subcatagory` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `value` varchar(45) DEFAULT NULL,
+  `group_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`,`group_id`),
+  KEY `fk_supgroup_group1_idx` (`group_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `comment`
+--
+ALTER TABLE `comment`
+  ADD CONSTRAINT `fk_comment_post1` FOREIGN KEY (`post_id`) REFERENCES `post` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_comment_member1` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `member`
+--
+ALTER TABLE `member`
+  ADD CONSTRAINT `fk_member_SEX` FOREIGN KEY (`SEX_id`) REFERENCES `sex` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_member_privilege1` FOREIGN KEY (`privilege_id`) REFERENCES `privilege` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `member_has_group`
+--
+ALTER TABLE `member_has_group`
+  ADD CONSTRAINT `fk_member_has_group_group1` FOREIGN KEY (`group_id`) REFERENCES `catagory` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_member_has_group_member1` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `post`
+--
+ALTER TABLE `post`
+  ADD CONSTRAINT `fk_post_member1` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_post_supgroup1` FOREIGN KEY (`supgroup_id`, `supgroup_group_id`) REFERENCES `subcatagory` (`id`, `group_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `subcatagory`
+--
+ALTER TABLE `subcatagory`
+  ADD CONSTRAINT `fk_supgroup_group1` FOREIGN KEY (`group_id`) REFERENCES `catagory` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
