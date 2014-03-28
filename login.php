@@ -150,7 +150,7 @@ if( isset($_POST['first_name'])){
 			</div>
 			<div class="row">
 				<div class="col-xs-4 col-sm-3 col-md-12">
-						<button style="display:block;width:100px;margin:0 auto; type="button" class="btn" data-color="info" tabindex="7">ลงทะเบียน</button>
+						<input type="submit" value="ลงทะเบียน" style="display:block;width:100px;margin:0 auto;" class="btn" data-color="info" tabindex="7">
 					</span>
 				</div>
 				
