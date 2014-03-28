@@ -24,6 +24,7 @@ include 'config.php';
 
 <!-- CSS code from Bootply.com editor -->
 <link href="CSS/main.css" type="text/css" rel="stylesheet">
+<script type='text/javascript'src="jquery/jquery-1.10.2.js"></script>
 
 </head>
 
@@ -110,7 +111,7 @@ include 'config.php';
 						<!--/stories-->
 						<div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-		<form role="form">
+		<form role="form" action="login.php"method="post" id="form-register">
 			<h1>ลงทะเบียน</h1>
 			<hr class="colorgraph">
 			<div class="row">
@@ -158,7 +159,7 @@ include 'config.php';
 			<hr class="colorgraph">
 			<div class="row">
 				<div class="col-xs-12 col-md-6"><input type="submit" value="ลงทะเบียน" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
-				<div class="col-xs-12 col-md-6"><a href="#" class="btn btn-success btn-block btn-lg">เข้าสู่ระบบ</a></div>
+				<div class="col-xs-12 col-md-6" onclick="$('#form-register').hide()"><p class="btn btn-success btn-block btn-lg">เข้าสู่ระบบ</p></div>
 			</div>
 		</form>
 	</div>
