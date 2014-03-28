@@ -155,12 +155,9 @@ if( isset($_POST['first_name'])){
                         <input type="checkbox" name="t_and_c" id="t_and_c" class="hidden" value="1">
 					</span>
 				</div>
-				
-				
-				<!--<div class="col-xs-8 col-sm-9 col-md-9">
-					 By clicking <strong class="label label-primary">Register</strong>, you agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> set out by this site, including our Cookie Use.
-				</div>-->
 			</div>
+			<div class="col-xs-6 col-md-12"><p class="btn btn-info btn-block btn-lg">ลงทะเบียน</p></div>
+			<br><br>
 			</form>
 			
 			<form role="form" action="login.php" method="post" id="form-login">
@@ -178,12 +175,14 @@ if( isset($_POST['first_name'])){
 					</div>
 				</div>
 			</div>
+			<div class="col-xs-6 col-md-12"><p class="btn btn-danger btn-block btn-lg">เข้าสู่ระบบ</p></div>
+			<br><br>
 			</form>
 			<hr class="colorgraph">
 			<div class="row">
 				<!-- <div class="col-xs-12 col-md-6"><input type="submit" value="ลงทะเบียน" class="btn btn-primary btn-block btn-lg" tabindex="7"></div> -->
-				<div class="col-xs-12 col-md-6" onclick="$('#form-register').hide();$('#form-login').show()"><p class="btn btn-primary btn-block btn-lg">เข้าสู่ระบบ</p></div>
-				<div class="col-xs-12 col-md-6" onclick="$('#form-register').show();$('#form-login').hide()"><p class="btn btn-success btn-block btn-lg">ลงทะเบียน</p></div>
+				<div class="col-xs-12 col-md-6" onclick="$('#form-register').hide();$('#form-login').show()"><p class="btn btn-default btn-block btn-lg">เข้าสู่ระบบ</p></div>
+				<div class="col-xs-12 col-md-6" onclick="$('#form-register').show();$('#form-login').hide()"><p class="btn btn-default btn-block btn-lg">ลงทะเบียน</p></div>
 			</div>
 			<br><br>
 		
