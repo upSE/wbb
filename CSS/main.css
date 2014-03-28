@@ -188,3 +188,7 @@ a,a:hover {
 	background-color: #C23836;
 	color: #E45A58;
 }
+
+.form-group span{
+	color:#F00;
+}
