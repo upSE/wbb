@@ -1,5 +1,10 @@
 <?php
 include 'config.php';
+$error = "";
+if( isset($_POST['first_name'])){
+	if (empty($_POST['first_name']) ) $error = "firstname";
+	elseif (empty($_POST['last_name']) ) $error = "lastname";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,8 +29,7 @@ include 'config.php';
 
 <!-- CSS code from Bootply.com editor -->
 <link href="CSS/main.css" type="text/css" rel="stylesheet">
-<script type='text/javascript'src="jquery/jquery-1.10.2.js"></script>
-
+<script type="text/javascript" src="jquery-ui-1.10.4/jquery-1.10.2.js"></script>
 </head>
 
 <!-- HTML code from Bootply.com editor -->
@@ -111,18 +115,18 @@ include 'config.php';
 						<!--/stories-->
 						<div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-		<form role="form" action="login.php"method="post" id="form-register">
+		<form role="form" action="login.php" method="post" id="form-register" style="display:none">
 			<h1>ลงทะเบียน</h1>
 			<hr class="colorgraph">
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-                        <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="ชื่อ" tabindex="1">
+                        <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="ชื่อ" tabindex="1"><span><?php echo ($error=="firstname"?"ต้องไม่เป็นช่องว่าง":"");?></span>
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-						<input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="นามสกุล" tabindex="2">
+						<input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="นามสกุล" tabindex="2"><span><?php echo ($error=="lastname"?"ต้องไม่เป็นช่องว่าง":"");?></span>
 					</div>
 				</div>
 			</div>
@@ -151,26 +155,42 @@ include 'config.php';
                         <input type="checkbox" name="t_and_c" id="t_and_c" class="hidden" value="1">
 					</span>
 				</div>
+				
+				
 				<!--<div class="col-xs-8 col-sm-9 col-md-9">
 					 By clicking <strong class="label label-primary">Register</strong>, you agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> set out by this site, including our Cookie Use.
 				</div>-->
 			</div>
+			</form>
 			
+			<form role="form" action="login.php" method="post" id="form-login">
+			<h1>เข้าสู่ระบบ</h1>
 			<hr class="colorgraph">
 			<div class="row">
-				<div class="col-xs-12 col-md-6"><input type="submit" value="ลงทะเบียน" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
-				<div class="col-xs-12 col-md-6" onclick="$('#form-register').hide()"><p class="btn btn-success btn-block btn-lg">เข้าสู่ระบบ</p></div>
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="form-group">
+                        <input type="text" name="display_name" id="display_name" class="form-control input-lg" placeholder="ชื่อผู้ใช้" tabindex="1"><span><?php echo ($error=="firstname"?"ต้องไม่เป็นช่องว่าง":"");?></span>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="form-group">
+						<input type="text" name="password" id="password" class="form-control input-lg" placeholder="รหัสผ่าน" tabindex="2"><span><?php echo ($error=="lastname"?"ต้องไม่เป็นช่องว่าง":"");?></span>
+					</div>
+				</div>
 			</div>
-		</form>
+			</form>
+			<hr class="colorgraph">
+			<div class="row">
+				<!-- <div class="col-xs-12 col-md-6"><input type="submit" value="ลงทะเบียน" class="btn btn-primary btn-block btn-lg" tabindex="7"></div> -->
+				<div class="col-xs-12 col-md-6" onclick="$('#form-register').hide();$('#form-login').show()"><p class="btn btn-primary btn-block btn-lg">เข้าสู่ระบบ</p></div>
+				<div class="col-xs-12 col-md-6" onclick="$('#form-register').show();$('#form-login').hide()"><p class="btn btn-success btn-block btn-lg">ลงทะเบียน</p></div>
+			</div>
+			<br><br>
+		
 	</div>
 </div>
 
 						<!--/stories-->
-
-
-						<!--<a href="/" class="btn btn-primary pull-right btnNext">More <i
-							class="glyphicon glyphicon-chevron-right"></i>
-						</a>-->
 
 
 					</div>
