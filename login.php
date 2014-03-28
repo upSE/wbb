@@ -149,10 +149,8 @@ if( isset($_POST['first_name'])){
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-4 col-sm-3 col-md-3">
-					<span class="button-checkbox">
-						<!--<button type="button" class="btn" data-color="info" tabindex="7">I Agree</button>-->
-                        <input type="checkbox" name="t_and_c" id="t_and_c" class="hidden" value="1">
+				<div class="col-xs-4 col-sm-3 col-md-12">
+						<button style="display:block;width:100px;margin:0 auto; type="button" class="btn" data-color="info" tabindex="7">ลงทะเบียน</button>
 					</span>
 				</div>
 				
