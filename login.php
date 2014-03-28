@@ -166,22 +166,16 @@ if( isset($_POST['first_name'])){
 			<form role="form" action="login.php" method="post" id="form-login">
 			<h1>เข้าสู่ระบบ</h1>
 			<hr class="colorgraph">
-			<div class="form-group">
-				<input type="text" name="display_name" id="display_name" class="form-control input-lg" placeholder="ชื่อผู้ใช้" tabindex="3">
-			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-						<input type="password" name="password" id="password" class="form-control input-lg" placeholder="รหัสผ่าน" tabindex="5">
+                        <input type="text" name="display_name" id="display_name" class="form-control input-lg" placeholder="ชื่อผู้ใช้" tabindex="1"><span><?php echo ($error=="firstname"?"ต้องไม่เป็นช่องว่าง":"");?></span>
 					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-4 col-sm-3 col-md-3">
-					<span class="button-checkbox">
-						<!--<button type="button" class="btn" data-color="info" tabindex="7">I Agree</button>-->
-                        <input type="checkbox" name="t_and_c" id="t_and_c" class="hidden" value="1">
-					</span>
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="form-group">
+						<input type="text" name="password" id="password" class="form-control input-lg" placeholder="รหัสผ่าน" tabindex="2"><span><?php echo ($error=="lastname"?"ต้องไม่เป็นช่องว่าง":"");?></span>
+					</div>
 				</div>
 				
 				
