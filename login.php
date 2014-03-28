@@ -157,8 +157,8 @@ include 'config.php';
 			
 			<hr class="colorgraph">
 			<div class="row">
-				<div class="col-xs-12 col-md-6"><input type="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
-				<div class="col-xs-12 col-md-6"><a href="#" class="btn btn-success btn-block btn-lg">Sign In</a></div>
+				<div class="col-xs-12 col-md-6"><input type="submit" value="ลงทะเบียน" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+				<div class="col-xs-12 col-md-6"><a href="#" class="btn btn-success btn-block btn-lg">เข้าสู่ระบบ</a></div>
 			</div>
 		</form>
 	</div>
@@ -167,9 +167,9 @@ include 'config.php';
 						<!--/stories-->
 
 
-						<a href="/" class="btn btn-primary pull-right btnNext">More <i
+						<!--<a href="/" class="btn btn-primary pull-right btnNext">More <i
 							class="glyphicon glyphicon-chevron-right"></i>
-						</a>
+						</a>-->
 
 
 					</div>
