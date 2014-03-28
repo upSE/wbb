@@ -1,9 +1,11 @@
 <?php
 include 'config.php';
 $error = "";
-if( isset($_POST['first_name'])){
-	if (empty($_POST['first_name']) ) $error = "firstname";
-	elseif (empty($_POST['last_name']) ) $error = "lastname";
+if (isset ( $_POST ['first_name'] )) {
+	if (empty ( $_POST ['first_name'] ))
+		$error = "firstname";
+	elseif (empty ( $_POST ['last_name'] ))
+		$error = "lastname";
 }
 ?>
 <!DOCTYPE html>
@@ -114,80 +116,112 @@ if( isset($_POST['first_name'])){
 
 						<!--/stories-->
 						<div class="row">
-    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-		<form role="form" action="login.php" method="post" id="form-register" style="display:none">
-			<h1>ลงทะเบียน</h1>
-			<hr class="colorgraph">
-			<div class="row">
-				<div class="col-xs-12 col-sm-6 col-md-6">
-					<div class="form-group">
-                        <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="ชื่อ" tabindex="1"><span><?php echo ($error=="firstname"?"ต้องไม่เป็นช่องว่าง":"");?></span>
-					</div>
-				</div>
-				<div class="col-xs-12 col-sm-6 col-md-6">
-					<div class="form-group">
-						<input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="นามสกุล" tabindex="2"><span><?php echo ($error=="lastname"?"ต้องไม่เป็นช่องว่าง":"");?></span>
-					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<input type="text" name="display_name" id="display_name" class="form-control input-lg" placeholder="ชื่อผู้ใช้" tabindex="3">
-			</div>
-			<div class="form-group">
-				<input type="email" name="email" id="email" class="form-control input-lg" placeholder="อีเมล์" tabindex="4">
-			</div>
-			<div class="row">
-				<div class="col-xs-12 col-sm-6 col-md-6">
-					<div class="form-group">
-						<input type="password" name="password" id="password" class="form-control input-lg" placeholder="รหัสผ่าน" tabindex="5">
-					</div>
-				</div>
-				<div class="col-xs-12 col-sm-6 col-md-6">
-					<div class="form-group">
-						<input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="ยืนยันรหัสผ่าน" tabindex="6">
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-4 col-sm-3 col-md-3">
-					<span class="button-checkbox">
-						<!--<button type="button" class="btn" data-color="info" tabindex="7">I Agree</button>-->
-                        <input type="checkbox" name="t_and_c" id="t_and_c" class="hidden" value="1">
-					</span>
-				</div>
-			</div>
-			<div class="col-xs-6 col-md-12"><p class="btn btn-info btn-block btn-lg">ลงทะเบียน</p></div>
-			<br><br>
-			</form>
-			
-			<form role="form" action="login.php" method="post" id="form-login">
-			<h1>เข้าสู่ระบบ</h1>
-			<hr class="colorgraph">
-			<div class="row">
-				<div class="col-xs-12 col-sm-6 col-md-6">
-					<div class="form-group">
-                        <input type="text" name="display_name" id="display_name" class="form-control input-lg" placeholder="ชื่อผู้ใช้" tabindex="1"><span><?php echo ($error=="firstname"?"ต้องไม่เป็นช่องว่าง":"");?></span>
-					</div>
-				</div>
-				<div class="col-xs-12 col-sm-6 col-md-6">
-					<div class="form-group">
-						<input type="text" name="password" id="password" class="form-control input-lg" placeholder="รหัสผ่าน" tabindex="2"><span><?php echo ($error=="lastname"?"ต้องไม่เป็นช่องว่าง":"");?></span>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-6 col-md-12"><p class="btn btn-danger btn-block btn-lg">เข้าสู่ระบบ</p></div>
-			<br><br>
-			</form>
-			<hr class="colorgraph">
-			<div class="row">
-				<!-- <div class="col-xs-12 col-md-6"><input type="submit" value="ลงทะเบียน" class="btn btn-primary btn-block btn-lg" tabindex="7"></div> -->
-				<div class="col-xs-12 col-md-6" onclick="$('#form-register').hide();$('#form-login').show()"><p class="btn btn-default btn-block btn-lg">เข้าสู่ระบบ</p></div>
-				<div class="col-xs-12 col-md-6" onclick="$('#form-register').show();$('#form-login').hide()"><p class="btn btn-default btn-block btn-lg">ลงทะเบียน</p></div>
-			</div>
-			<br><br>
-		
-	</div>
-</div>
+							<div
+								class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+								<form role="form" action="login.php" method="post"
+									id="form-register" style="display: none">
+									<h1>ลงทะเบียน</h1>
+									<hr class="colorgraph">
+									<div class="row">
+										<div class="col-xs-12 col-sm-6 col-md-6">
+											<div class="form-group">
+												<input type="text" name="first_name" id="first_name"
+													class="form-control input-lg" placeholder="ชื่อ"
+													tabindex="1"><span><?php echo ($error=="firstname"?"ต้องไม่เป็นช่องว่าง":"");?></span>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-6 col-md-6">
+											<div class="form-group">
+												<input type="text" name="last_name" id="last_name"
+													class="form-control input-lg" placeholder="นามสกุล"
+													tabindex="2"><span><?php echo ($error=="lastname"?"ต้องไม่เป็นช่องว่าง":"");?></span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<input type="text" name="display_name" id="display_name"
+											class="form-control input-lg" placeholder="ชื่อผู้ใช้"
+											tabindex="3">
+									</div>
+									<div class="form-group">
+										<input type="email" name="email" id="email"
+											class="form-control input-lg" placeholder="อีเมล์"
+											tabindex="4">
+									</div>
+									<div class="row">
+										<div class="col-xs-12 col-sm-6 col-md-6">
+											<div class="form-group">
+												<input type="password" name="password" id="password"
+													class="form-control input-lg" placeholder="รหัสผ่าน"
+													tabindex="5">
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-6 col-md-6">
+											<div class="form-group">
+												<input type="password" name="password_confirmation"
+													id="password_confirmation" class="form-control input-lg"
+													placeholder="ยืนยันรหัสผ่าน" tabindex="6">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-4 col-sm-3 col-md-3">
+											<span class="button-checkbox"> <!--<button type="button" class="btn" data-color="info" tabindex="7">I Agree</button>-->
+												<input type="checkbox" name="t_and_c" id="t_and_c"
+												class="hidden" value="1">
+											</span>
+										</div>
+									</div>
+									<div class="col-xs-6 col-md-12">
+										<p class="btn btn-default btn-block btn-lg">ลงทะเบียน</p>
+									</div>
+									<br>
+									<br>
+								</form>
+
+								<form role="form" action="login.php" method="post"
+									id="form-login">
+									<h1>เข้าสู่ระบบ</h1>
+									<hr class="colorgraph">
+									<div class="row">
+										<div class="col-xs-12 col-sm-6 col-md-6">
+											<div class="form-group">
+												<input type="text" name="display_name" id="display_name"
+													class="form-control input-lg" placeholder="ชื่อผู้ใช้"
+													tabindex="1"><span><?php echo ($error=="firstname"?"ต้องไม่เป็นช่องว่าง":"");?></span>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-6 col-md-6">
+											<div class="form-group">
+												<input type="text" name="password" id="password"
+													class="form-control input-lg" placeholder="รหัสผ่าน"
+													tabindex="2"><span><?php echo ($error=="lastname"?"ต้องไม่เป็นช่องว่าง":"");?></span>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-6 col-md-12">
+										<p class="btn btn-default btn-block btn-lg">เข้าสู่ระบบ</p>
+									</div>
+									<br>
+									<br>
+								</form>
+								<hr class="colorgraph">
+								<div class="row">
+									<!-- <div class="col-xs-12 col-md-6"><input type="submit" value="ลงทะเบียน" class="btn btn-primary btn-block btn-lg" tabindex="7"></div> -->
+									<div class="col-xs-12 col-md-6"
+										onclick="$('#form-register').hide();$('#form-login').show()">
+										<p class="btn btn-success btn-block btn-lg">เข้าสู่ระบบ</p>
+									</div>
+									<div class="col-xs-12 col-md-6"
+										onclick="$('#form-register').show();$('#form-login').hide()">
+										<p class="btn btn-primary btn-block btn-lg">ลงทะเบียน</p>
+									</div>
+								</div>
+								<br>
+								<br>
+
+							</div>
+						</div>
 
 						<!--/stories-->
 
